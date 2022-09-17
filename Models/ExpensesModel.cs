@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Repository;
 
 namespace Budgeteer
@@ -15,7 +18,8 @@ namespace Budgeteer
         public List<ExpensesModel> expenses = new List<ExpensesModel>();
         public List<string> expenseWriteOut = new List<string>();
         public List<ExpensesModel> newExpenses = new List<ExpensesModel>();
-
+        private bool hasRun = false;
+      
         
         private static ExpensesModel instance;
         public static ExpensesModel Instance
@@ -29,11 +33,15 @@ namespace Budgeteer
                 return instance;
             }
         }
-       
+
+        #region Properties
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string Name { get ; set; }
         public double Cost { get; set; }
         public ExpenseType Type { get; set; }
+
+        public bool HasRun { get => hasRun; }
+        #endregion
 
         public void GetExpenses()
         {
@@ -47,6 +55,7 @@ namespace Budgeteer
             }
             ExpensesToString();
             repository.Close();
+            hasRun = true;
         }
 
         public void ExpensesToString()
@@ -72,7 +81,10 @@ namespace Budgeteer
          
 
             repository.Close();
+            
 
         }
+
+
     }
 }

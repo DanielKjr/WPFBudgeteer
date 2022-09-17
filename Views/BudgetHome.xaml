@@ -30,7 +30,8 @@
         </Grid.RowDefinitions>
 
 
-        <Button x:Name="ViewOverview" Grid.Row="7" Grid.Column="7" Click="ViewOverview_Click">ViewOverview</Button>
-        
+        <Button x:Name="ViewOverview" Grid.Row="4" Grid.Column="4" Click="ViewOverview_Click">ViewOverview</Button>
+        <Button x:Name="ViewCustomGrid" Grid.Row="6" Grid.Column="4" Click="ViewCustomGrid_Click" Content="ViewCustomGrid"/>
+
     </Grid>
 </Page>

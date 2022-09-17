@@ -23,13 +23,27 @@ namespace Budgeteer
         public BudgetHome()
         {
             InitializeComponent();
-           
+
+
         }
 
         private void ViewOverview_Click(object sender, RoutedEventArgs e)
         {
-            ExpensesModel.Instance.GetExpenses();
+            if (!ExpensesModel.Instance.HasRun)
+            {
+                ExpensesModel.Instance.GetExpenses();
+            }
+           
             NavigationService.Navigate(new BudgetDisplay());
+        }
+
+        private void ViewCustomGrid_Click(object sender, RoutedEventArgs e)
+        {
+            if (!ExpensesModel.Instance.HasRun)
+            {
+                ExpensesModel.Instance.GetExpenses();
+            }
+            NavigationService.Navigate(new CustomColumns());
         }
     }
 }
